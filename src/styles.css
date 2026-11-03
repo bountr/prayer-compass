@@ -1,0 +1,245 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Namaz Vakitleri & Kıble — huzurlu, koyu yeşil/lacivert tema.
+ * Tüm renkler oklch semantik token olarak tanımlıdır.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-gold: var(--gold);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  /* Yazı tipi yığınları: uzak font yüklenmezse (çevrimdışı) veya yazı sistemi
+     kapsanmıyorsa (Devanagari, CJK, Kiril, Arapça/Fars) sistem yazı tipine
+     güvenli biçimde düşer. Yeni uzak font EKLENMEZ. */
+  --font-display: "Amiri", "Noto Naskh Arabic", ui-serif, Georgia, serif;
+  --font-sans:
+    "Manrope", ui-sans-serif, system-ui, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Devanagari",
+    "Noto Sans Bengali", "Noto Sans Arabic", "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+  --radius: 1.1rem;
+  /* koyu lacivert zemin */
+  --background: oklch(0.19 0.045 250);
+  --foreground: oklch(0.96 0.012 150);
+  --surface: oklch(0.24 0.05 245);
+  --surface-foreground: oklch(0.96 0.012 150);
+  --card: oklch(0.245 0.048 240);
+  --card-foreground: oklch(0.96 0.012 150);
+  --popover: oklch(0.245 0.048 240);
+  --popover-foreground: oklch(0.96 0.012 150);
+  /* koyu zümrüt yeşili */
+  --primary: oklch(0.62 0.11 162);
+  --primary-foreground: oklch(0.17 0.04 250);
+  --secondary: oklch(0.3 0.045 235);
+  --secondary-foreground: oklch(0.95 0.01 150);
+  --muted: oklch(0.28 0.04 240);
+  --muted-foreground: oklch(0.72 0.03 200);
+  --accent: oklch(0.42 0.09 165);
+  --accent-foreground: oklch(0.96 0.012 150);
+  --gold: oklch(0.82 0.11 88);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.97 0.01 150);
+  --border: oklch(0.36 0.05 220 / 55%);
+  --input: oklch(0.36 0.05 220 / 45%);
+  --ring: oklch(0.62 0.11 162);
+  --gradient-night:
+    radial-gradient(120% 90% at 50% -10%, oklch(0.34 0.08 172 / 0.55), transparent 65%),
+    linear-gradient(180deg, oklch(0.19 0.045 250), oklch(0.16 0.04 255));
+  --shadow-soft: 0 18px 45px -22px oklch(0.1 0.05 250 / 0.9);
+}
+
+/*
+ * Açık tema — aynı semantik tokenların gündüz karşılığı.
+ * Kırık beyaz zemin + koyu lacivert metin; WCAG AA kontrast hedefli.
+ */
+.light {
+  --background: oklch(0.97 0.012 95);
+  --foreground: oklch(0.24 0.04 250);
+  --surface: oklch(0.995 0.006 95);
+  --surface-foreground: oklch(0.24 0.04 250);
+  --card: oklch(0.995 0.006 95);
+  --card-foreground: oklch(0.24 0.04 250);
+  --popover: oklch(0.995 0.006 95);
+  --popover-foreground: oklch(0.24 0.04 250);
+  --primary: oklch(0.46 0.1 163);
+  --primary-foreground: oklch(0.99 0.01 150);
+  --secondary: oklch(0.93 0.015 240);
+  --secondary-foreground: oklch(0.28 0.04 250);
+  --muted: oklch(0.93 0.014 240);
+  --muted-foreground: oklch(0.45 0.03 245);
+  --accent: oklch(0.88 0.04 165);
+  --accent-foreground: oklch(0.26 0.05 250);
+  --gold: oklch(0.55 0.11 80);
+  --destructive: oklch(0.53 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 150);
+  --border: oklch(0.62 0.03 245 / 32%);
+  --input: oklch(0.62 0.03 245 / 30%);
+  --ring: oklch(0.46 0.1 163);
+  --gradient-night:
+    radial-gradient(120% 90% at 50% -10%, oklch(0.83 0.06 168 / 0.5), transparent 62%),
+    linear-gradient(180deg, oklch(0.98 0.012 95), oklch(0.95 0.014 100));
+  --shadow-soft: 0 16px 40px -26px oklch(0.35 0.05 250 / 0.4);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    /* iOS WebView sayfa sınırlarında body'nin arkasını göstermesin. */
+    min-height: 100%;
+    background-color: var(--color-background);
+    /* Tema geçişi kısa ve yumuşak */
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  body {
+    /* Ekrandan kısa sayfada dahi alt home-indicator alanı boyansın. */
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--color-background);
+    background-image: var(--gradient-night);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  /* Kaydırmayı KORU, yalnızca native kabuğun kenar ötesi çekmesini sınırla.
+     Web/PWA'da tarayıcının normal pull-to-refresh davranışına dokunma. */
+  html.native-app,
+  html.native-app body {
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+    overflow-x: clip;
+    /* Native page gestures: vertical pan only, no page pinch/double-tap zoom.
+       No touch listeners/preventDefault: inputs and taps remain native. */
+    touch-action: pan-y;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html,
+    body {
+      transition: none;
+    }
+  }
+}
+
+/* Outside the base layer so text-sm utilities cannot restore focus zoom.
+   Do not set text-size-adjust or constrain browser/PWA accessibility zoom. */
+html.native-app :is(input, textarea, select) {
+  font-size: max(1rem, 16px);
+}
+
+@utility surface-card {
+  background-color: color-mix(in oklab, var(--surface) 85%, transparent);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
+}
+
+.light .surface-card {
+  background-color: color-mix(in oklab, var(--surface) 96%, transparent);
+}
+
+/* İslami motiften esinlenen sade yıldız/geometri dokusu */
+@utility motif-grid {
+  background-image:
+    radial-gradient(circle at 50% 50%, oklch(0.62 0.11 162 / 0.14) 1px, transparent 1.6px),
+    radial-gradient(circle at 0% 0%, oklch(0.82 0.11 88 / 0.1) 1px, transparent 1.6px);
+  background-size: 26px 26px;
+  background-position:
+    0 0,
+    13px 13px;
+}
+
+.light .motif-grid {
+  background-image:
+    radial-gradient(circle at 50% 50%, oklch(0.46 0.1 163 / 0.16) 1px, transparent 1.6px),
+    radial-gradient(circle at 0% 0%, oklch(0.55 0.11 80 / 0.12) 1px, transparent 1.6px);
+}
+
+@utility text-gold {
+  color: var(--gold);
+}
+
+/* Readable text in Settings and Dhikr; preserve the large counter and page zoom. */
+.readable-ui {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.readable-ui :is(.text-\[10px\], .text-\[11px\]) {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.readable-ui .text-xs {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.readable-ui .text-sm {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.readable-ui .text-base {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.readable-ui .text-lg {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.readable-ui .text-xl {
+  font-size: 1.375rem;
+  line-height: 1.5;
+}
+
+.readable-ui .text-2xl {
+  font-size: 1.625rem;
+  line-height: 1.5;
+}
