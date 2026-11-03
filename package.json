@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ios:prepare": "npm run build && npx cap sync ios",
+    "ios:open": "npx cap open ios"
   },
   "dependencies": {
     "@capacitor/core": "^8.6.0",
@@ -26,6 +28,8 @@
     "@vitejs/plugin-react": "^5.2.0",
     "typescript": "^5.8.3",
     "vite": "^8.1.5",
-    "vite-tsconfig-paths": "^6.0.2"
+    "vite-tsconfig-paths": "^6.0.2",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/ios": "^8.6.0"
   }
 }
