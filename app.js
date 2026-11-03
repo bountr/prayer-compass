@@ -61,7 +61,6 @@ $("haptics").onchange=e=>{s.haptics=e.target.checked;save();};
 $("wipe").onclick=()=>{if(confirm(msg("Tüm zikir sayımları ve özel zikirler kalıcı olarak silinsin mi?","Permanently delete all dhikr counts and custom items?"))){localStorage.removeItem(KEY);s=getState();tab="counter";render();}};
 window.matchMedia("(prefers-color-scheme: light)").addEventListener?.("change",applyTheme);
 document.addEventListener("gesturestart",e=>{if(e.cancelable)e.preventDefault();},{passive:false});
-let lastTouch=0;document.addEventListener("touchend",e=>{if(e.target.closest("button,.count-circle")){const now=Date.now();if(now-lastTouch<300&&e.cancelable)e.preventDefault();lastTouch=now;}},{passive:false});
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)render();});
 window.addEventListener("focus",render);
 if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
